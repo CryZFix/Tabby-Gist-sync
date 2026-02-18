@@ -79,7 +79,7 @@ export class SyncConfigSettingsTabComponent implements OnInit {
                 // config file
                 const rawConfig = yaml.dump(store);
                 const encryptedConfig = this.aesEncrypt(rawConfig, token);
-                files.push(new GistFile('config.yaml', encryptedConfig));
+                files.push(new GistFile('tabby.cfg', encryptedConfig));
 
                 // ssh password
                 // files.push(new GistFile('ssh.auth.json', JSON.stringify(await this.getSSHPluginAllPasswordInfos(token))));
@@ -90,8 +90,8 @@ export class SyncConfigSettingsTabComponent implements OnInit {
 
                 const result = await getGist(type, token, baseUrl, gist);
 
-                if (result.has('config.yaml')) {
-                    const encrypted = result.get('config.yaml').value;
+                if (result.has('tabby.cfg')) {
+                    const encrypted = result.get('tabby.cfg').value;
                     const decryptedYaml = this.aesDecrypt(encrypted, token);
                     const config = yaml.load(decryptedYaml) as any;
                     config.syncConfig = selfConfig;

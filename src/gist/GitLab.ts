@@ -37,7 +37,7 @@ class GitLab extends Gist {
     sync(gist: string, gists: GistFile[]): Promise<string> {
 
         const data = {
-            title: "sync terminus config",
+            title: "Tabby config",
             visibility: "private",
             files: gists.map(e => {
                 let obj: any = { file_path: e.name, content: e.value };

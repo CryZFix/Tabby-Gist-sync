@@ -40,7 +40,7 @@ class Gitee extends Gist {
         const data = {
             access_token: this.token,
             files: this.toFiles(gists),
-            description: "sync terminus config",
+            description: "Tabby config",
             public: false,
             id: gist || ''
         };
